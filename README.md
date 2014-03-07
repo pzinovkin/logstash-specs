@@ -21,6 +21,7 @@ Another way:
     yum install rpmdevtools
     rpmdev-setuptree
 
+
 Prepare
 -------
 
@@ -30,7 +31,7 @@ Prepare
 
 
 Build ElasticSearch RPM
-----------------
+-----------------------
 
     cp -vr ~/temp/logstash-specs/elasticsearch/* ~/rpmbuild/
     cd ~/rpmbuild/
@@ -40,6 +41,15 @@ Result RPM:
 
     ls ~/rpmbuild/RPMS/x86_64/elasticsearch-0.90.9-1.el6.x86_64.rpm
 
+
+See also
+--------
+* [github.com/tavisto/elasticsearch-rpms][elasticsearch-rpms]
+* [KIBANA + ELASTICSEARCH + LOGSTASH + REDIS ON RHEL 6][logstash-install]
+
+
 [elasticsearch]: http://www.elasticsearch.com/
 [logstash]: https://http://logstash.net/
 [prepare-rpm]: http://wiki.centos.org/HowTos/SetupRpmBuildEnvironment
+[elasticsearch-rpms]: https://github.com/tavisto/elasticsearch-rpms
+[logstash-install]: http://cleversoft.wordpress.com/2013/04/05/887/
