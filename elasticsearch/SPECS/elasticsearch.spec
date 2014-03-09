@@ -1,3 +1,4 @@
+%define debug_package %{nil}
 %define __prefix /usr/local
 
 Name:           elasticsearch
@@ -24,7 +25,7 @@ Requires(pre):  chkconfig initscripts
 Requires(pre):  shadow-utils
 
 %description
-A distributed, highly available, RESTful search engine.
+A distributed, highly available, RESTful search engine
 
 %prep
 %setup -q -n %{name}-%{version}

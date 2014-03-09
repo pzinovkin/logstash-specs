@@ -1,4 +1,4 @@
-/var/log/elasticsearch/*.log {
+/var/log/logstash/*.log {
     daily
     rotate 14
     copytruncate

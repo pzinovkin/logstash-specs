@@ -1,4 +1,5 @@
 #! /bin/bash
+
 ### BEGIN INIT INFO
 # Provides:          elasticsearch
 # Required-Start:    $all
@@ -6,8 +7,8 @@
 # Default-Start:
 # Default-Stop:      0 1 6
 # Short-Description: Starts elasticsearch
-# chkconfig: - 80 15
 # Description: Elasticsearch
+# chkconfig: - 80 15
 ### END INIT INFO
 
 # Source function library.
@@ -20,15 +21,14 @@ ES_HOME=/usr/local/elasticsearch
 ES_USER=elasticsearch
 
 DAEMON=${ES_HOME}/bin/elasticsearch
-NAME=elasticsearch
-PID_FILE=${PIDFILE:-/var/run/${NAME}/${NAME}.pid}
-LOCK_FILE=${LOCKFILE:-/var/lock/subsys/${NAME}}
+PID_FILE=${PIDFILE:-/var/run/elasticsearch/elasticsearch.pid}
+LOCK_FILE=${LOCKFILE:-/var/lock/subsys/elasticsearch}
 NFILES=${NFILES:-32768}
 
-ES_PATH_LOG=${ES_PATH_LOG:-/var/log/${NAME}}
-ES_PATH_DATA=${ES_PATH_DATA:-/var/lib/${NAME}}
-ES_PATH_WORK=${ES_PATH_WORK:-/tmp/${NAME}}
-ES_PATH_CONF=${ES_PATH_CONF:-/etc/${NAME}}
+ES_PATH_LOG=${ES_PATH_LOG:-/var/log/elasticsearch}
+ES_PATH_DATA=${ES_PATH_DATA:-/var/lib/elasticsearch}
+ES_PATH_WORK=${ES_PATH_WORK:-/tmp/elasticsearch}
+ES_PATH_CONF=${ES_PATH_CONF:-/etc/elasticsearch}
 ES_PATH_PLUGINS=${ES_PATH_PLUGINS:-${ES_HOME}/plugins}
 ES_CONFIG=${ES_CONFIG:-${ES_PATH_CONF}/elasticsearch.yml}
 
@@ -47,7 +47,7 @@ ES_MAX_MEM=${ES_MAX_MEM:-1g}
 ES_INCLUDE=${ES_INCLUDE:-${ES_HOME}/bin/elasticsearch.in.sh}
 
 start() {
-    echo -n $"Starting ${NAME}: "
+    echo -n $"Starting elasticsearch: "
     mkdir -p $ES_PATH_WORK
     ulimit -n $NFILES
     daemon --pidfile=${PID_FILE} --user $ES_USER \
@@ -63,7 +63,7 @@ start() {
 }
 
 stop() {
-    echo -n $"Stopping ${NAME}: "
+    echo -n $"Stopping elasticsearch: "
     killproc -p ${PID_FILE} -d 10 $DAEMON
     RETVAL=$?
     echo
@@ -87,8 +87,7 @@ case "$1" in
         start
         ;;
     *)
-        N=/etc/init.d/${NAME}
-        echo "Usage: $N {start|stop|status|restart|force-reload}" >&2
+        echo "Usage: /etc/init.d/elasticsearch {start|stop|status|restart|force-reload}" >&2
         RETVAL=2
         ;;
 esac

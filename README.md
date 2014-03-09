@@ -4,7 +4,7 @@ Logstash SPECS for CentOS
 All that you need to build CentOS RPMs for:
 
 * [ElasticSearch][elasticsearch] 0.90.9
-* [LogStash][logstash] 1.3.3
+* [Logstash][logstash] 1.3.3
 
 
 Set Up an RPM Build Environment under CentOS
@@ -40,6 +40,18 @@ Build ElasticSearch RPM
 Result RPM:
 
     ls ~/rpmbuild/RPMS/x86_64/elasticsearch-0.90.9-1.el6.x86_64.rpm
+
+
+Build Logstash RPM
+------------------
+
+    cp -vr ~/temp/logstash-specs/logstash/* ~/rpmbuild/
+    cd ~/rpmbuild/
+    rpmbuild -v -bb SPECS/logstash.spec
+
+Result RPM:
+
+    ls ~/rpmbuild/RPMS/x86_64/logstash-1.3.3-1.el6.x86_64.rpm
 
 
 See also
