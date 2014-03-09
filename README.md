@@ -5,6 +5,7 @@ All that you need to build CentOS RPMs for:
 
 * [ElasticSearch][elasticsearch] 0.90.9
 * [Logstash][logstash] 1.3.3
+* [Kibana][kibana] 3.0.0
 
 
 Set Up an RPM Build Environment under CentOS
@@ -62,6 +63,7 @@ See also
 
 [elasticsearch]: http://www.elasticsearch.com/
 [logstash]: https://http://logstash.net/
+[kibana]: http://www.elasticsearch.org/overview/kibana/
 [prepare-rpm]: http://wiki.centos.org/HowTos/SetupRpmBuildEnvironment
 [elasticsearch-rpms]: https://github.com/tavisto/elasticsearch-rpms
 [logstash-install]: http://cleversoft.wordpress.com/2013/04/05/887/
