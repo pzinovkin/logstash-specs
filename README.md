@@ -55,6 +55,18 @@ Result RPM:
     ls ~/rpmbuild/RPMS/x86_64/logstash-1.3.3-1.el6.x86_64.rpm
 
 
+Build Kibana RPM
+----------------
+
+    cp -vr ~/temp/logstash-specs/kibana/* ~/rpmbuild/
+    cd ~/rpmbuild/
+    rpmbuild -v -bb SPECS/kibana.spec
+
+Result RPM:
+
+    ls ~/rpmbuild/RPMS/x86_64/kibana-3.0.0milestone5-1.el6.x86_64.rpm
+
+
 See also
 --------
 * [github.com/tavisto/elasticsearch-rpms][elasticsearch-rpms]
