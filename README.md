@@ -1,76 +1,45 @@
-Logstash SPECS for CentOS
-=========================
+# Logstash SPECS for CentOS
 
 All that you need to build CentOS RPMs for:
 
-* [ElasticSearch][elasticsearch] 0.90.9
-* [Logstash][logstash] 1.3.3
-* [Kibana][kibana] 3.0.0
+* [ElasticSearch][elasticsearch] 1.3.2
+* [Logstash][logstash] 1.4.2
+* [Kibana][kibana] 3.1.0
 
 
-Set Up an RPM Build Environment under CentOS
---------------------------------------------
+## Hot to build
 
-More info: [Set Up an RPM Build Environment][prepare-rpm].
+Clone repository and prepare RPM build environment.
 
-    yum install rpm-build make gcc
-    mkdir -p ~/rpmbuild/{BUILD,RPMS,SOURCES,SPECS,SRPMS}
-    echo '%_topdir %(echo $HOME)/rpmbuild' > ~/.rpmmacros
+    $ git clone https://github.com/pzinovkin/logstash-specs.git
+    $ cd logstash-specs
+    $ make init
 
-Another way:
+Now you can `make` something:
 
-    yum install rpmdevtools
-    rpmdev-setuptree
+    $ make
+    Please choose one of the following target:
+      init
+      clean
+      elasticsearch
+      kibana
+      logstash
+    $ make elasticsearch
 
+## Building with VritualBox 
 
-Prepare
--------
+Install VirtualBox and Vagrant. Initialize virtual machine.
 
-    mkdir ~/temp
-    cd ~/temp/
-    git clone https://github.com/dreadatour/logstash-specs.git
+    $ vagrant up
 
+SSH to newly created machine. Directory will be changed automatically.
 
-Build ElasticSearch RPM
------------------------
-
-    cp -vr ~/temp/logstash-specs/elasticsearch/* ~/rpmbuild/
-    cd ~/rpmbuild/
-    rpmbuild -v -bb SPECS/elasticsearch.spec
-
-Result RPM:
-
-    ls ~/rpmbuild/RPMS/x86_64/elasticsearch-0.90.9-1.el6.x86_64.rpm
-
-
-Build Logstash RPM
-------------------
-
-    cp -vr ~/temp/logstash-specs/logstash/* ~/rpmbuild/
-    cd ~/rpmbuild/
-    rpmbuild -v -bb SPECS/logstash.spec
-
-Result RPM:
-
-    ls ~/rpmbuild/RPMS/x86_64/logstash-1.3.3-1.el6.x86_64.rpm
-
-
-Build Kibana RPM
-----------------
-
-    cp -vr ~/temp/logstash-specs/kibana/* ~/rpmbuild/
-    cd ~/rpmbuild/
-    rpmbuild -v -bb SPECS/kibana.spec
-
-Result RPM:
-
-    ls ~/rpmbuild/RPMS/x86_64/kibana-3.0.0milestone5-1.el6.x86_64.rpm
-
+    $ vagrant ssh
+    $ make logstash
 
 See also
 --------
 * [github.com/tavisto/elasticsearch-rpms][elasticsearch-rpms]
-* [KIBANA + ELASTICSEARCH + LOGSTASH + REDIS ON RHEL 6][logstash-install]
 
 
 [elasticsearch]: http://www.elasticsearch.com/
@@ -78,4 +47,3 @@ See also
 [kibana]: http://www.elasticsearch.org/overview/kibana/
 [prepare-rpm]: http://wiki.centos.org/HowTos/SetupRpmBuildEnvironment
 [elasticsearch-rpms]: https://github.com/tavisto/elasticsearch-rpms
-[logstash-install]: http://cleversoft.wordpress.com/2013/04/05/887/

@@ -32,7 +32,7 @@ ES_PATH_CONF=${ES_PATH_CONF:-/etc/elasticsearch}
 ES_PATH_PLUGINS=${ES_PATH_PLUGINS:-${ES_HOME}/plugins}
 ES_CONFIG=${ES_CONFIG:-${ES_PATH_CONF}/elasticsearch.yml}
 
-DAEMON_OPTS="-p ${PID_FILE} \
+DAEMON_OPTS="-p ${PID_FILE} -d \
     -Des.config=${ES_CONFIG} \
     -Des.path.conf=${ES_PATH_CONF} \
     -Des.path.home=${ES_HOME} \

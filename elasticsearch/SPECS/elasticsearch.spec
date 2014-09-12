@@ -1,9 +1,10 @@
 %define debug_package %{nil}
+%define __jar_repack %{nil}
 %define __prefix /usr/local
 
 Name:           elasticsearch
 Summary:        A distributed, highly available, RESTful search engine
-Version:        0.90.9
+Version:        1.3.2
 Release:        1%{?dist}
 License:        Apache Software License 2.0
 Group:          MAILRU
@@ -11,14 +12,13 @@ Prefix:         %{_prefix}
 
 Url:            http://www.elasticsearch.com
 Source0:        http://download.elasticsearch.org/%{name}/%{name}/%{name}-%{version}.tar.gz
-Source1:        elasticsearch-init.d
-Source2:        elasticsearch-logrotate.d
+Source1:        elasticsearch-init.sh
+Source2:        elasticsearch-logrotate.sh
 Source3:        elasticsearch-config-logging.yml
-Source4:        elasticsearch-sysconfig
+Source4:        elasticsearch-sysconfig.sh
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
-Requires:       jpackage-utils
-Requires:       jre >= 1.6.0
+Requires:       java-1.7.0-openjdk >= 1.7.0
 
 Requires(post): chkconfig initscripts
 Requires(pre):  chkconfig initscripts
