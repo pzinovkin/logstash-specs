@@ -47,7 +47,8 @@ start() {
     daemon --pidfile=${pidfile} --user $LS_USER "$program $args >> ${LS_LOG_FILE} 2>&1 &"
 
     retval=$?
-    pid=`pidof $name`
+    usleep 500000
+    pid=`ps axo pid,command | grep -v "grep" | grep "logstash/runner.rb agent" | awk '{print $1}'`
     if [ -n "$pid" ]; then
         echo $pid > "$pidfile"
     fi
