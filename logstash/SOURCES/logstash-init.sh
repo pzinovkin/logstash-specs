@@ -24,7 +24,7 @@ pidfile="/var/run/$name/$name.pid"
 LS_USER=logstash
 LS_HOME=/var/lib/logstash
 LS_HEAP_SIZE="500m"
-LS_JAVA_OPTS="-Djava.io.tmpdir=/tmp/$name"
+LS_JAVA_OPTS="-Djava.io.tmpdir=/tmp"
 LS_LOG_DIR=/var/log/logstash
 LS_LOG_FILE="${LS_LOG_DIR}/$name.log"
 LS_CONF_DIR=/etc/logstash/
