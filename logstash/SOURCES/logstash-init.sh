@@ -38,6 +38,10 @@ args="agent -f ${LS_CONF_DIR} -l ${LS_LOG_FILE} ${LS_OPTS}"
 
 start() {
 
+    if rh_status >/dev/null 2>&1 ; then
+        return 0
+    fi
+
     echo -n $"Starting $name: "
     JAVA_OPTS=${LS_JAVA_OPTS}
     HOME=${LS_HOME}
